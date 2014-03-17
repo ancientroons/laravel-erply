@@ -1,6 +1,8 @@
 {
     "name": "mochaka/laravel-erply",
-    "description": "",
+    "description": "Laravel connector for Erply.com",
+	"keywords": ["laravel", "erply", "guzzle"],
+	"license": "MIT",
     "authors": [
         {
             "name": "Mochaka",
