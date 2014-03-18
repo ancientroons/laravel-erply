@@ -13,6 +13,7 @@ class Erply {
 	protected $clientCode;
 	protected $username;
 	protected $password;
+	protected $requests;
 
 	public function __construct($clientCode, $username, $password)
 	{
@@ -50,6 +51,35 @@ class Erply {
 			return $response;
 		}
 	}
+	
+	public function addCall($data)
+	{
+		$this->requests[] = $data;
+	}
+	
+        public function callBulk()
+        {
+                $count = count($this->requests);
+                if($count >= 100)
+                {
+                        $c = ceil($count / 90);
+                        $arr = array_chunk($this->requests, $c, true);
+                        foreach($arr as $a)
+                        {
+                                $return[] = json_decode($this->sendRequest('', array('requests'=>json_encode($a))), true);
+                        }
+                        $return['count'] = $count;
+                        $return ['split'] = $c;
+                        $return = json_encode($return);
+                }
+                else
+                {
+                        $return = $this->sendRequest('', array('requests'=>json_encode($this->requests)));
+                }
+
+                return $return;
+        }
+
 
 	protected function getSessionKey() 
 	{
