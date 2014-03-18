@@ -27,7 +27,7 @@ class Erply {
 
 		//validate that all required parameters are set
 		if(!$this->url OR !$this->clientCode OR !$this->username OR !$this->password){
-			throw new Exception('Missing parameters');
+			throw new \Exception('Missing parameters, please check your config file.');
 		}
 	
 		//add extra params
