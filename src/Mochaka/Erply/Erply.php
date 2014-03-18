@@ -89,7 +89,6 @@ class Erply {
 		if(!Session::get($sessionKey) || !Session::get($sessionExpiresKey) || Session::get($sessionExpiresKey) < time()) 
 		{
 			$response = $this->sendRequest("verifyUser", array("username" => $this->username, "password" => $this->password));
-			print_r($response);
 
 			if(!isset($response['records'][0]['sessionKey'])) 
 			{
