@@ -107,7 +107,7 @@ class Erply {
             $arr = array_chunk($this->requests, ceil($count / 90), true);
             foreach($arr as $a)
             {
-                $response[] = json_decode($this->sendRequest('', array('requests'=>json_encode($a))), true);
+                $response[] = $this->sendRequest('', array('requests'=>json_encode($a)));
             }
             $response['count'] = $count;
             $response['split'] = ceil($count / 90);
