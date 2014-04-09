@@ -157,7 +157,8 @@ class Erply {
 	 */
 	public function __call($method, $parameters = array())
 	{
-		return $this->sendRequest($method, $parameters[0]);
+		$param = (isset($parameters[0]) ? $parameters[0] : $parameters)
+		return $this->sendRequest($method, $param);
 	}
 
 }
