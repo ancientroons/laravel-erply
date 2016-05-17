@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Mochaka\\Erply": "src/"
+            "Mochaka\\Erply\\": "src/"
         }
     },
     "minimum-stability": "stable"
